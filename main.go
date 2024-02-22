@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ericthomasca/sudoku-go/sudoku"
+	"github.com/ericthomasca/sudoku-go-api/sudoku"
 )
 
 func main() {

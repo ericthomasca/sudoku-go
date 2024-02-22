@@ -10,8 +10,8 @@ RUN go mod download && go mod verify
 
 COPY . .
 
-RUN go build -o /sudoku-go
+RUN go build -o /sudoku-go-api
 
 EXPOSE 8976
 
-CMD ["/sudoku-go"]
+CMD ["/sudoku-go-api"]
