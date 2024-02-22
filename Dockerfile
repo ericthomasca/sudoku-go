@@ -2,12 +2,14 @@ FROM golang:1.21
 
 WORKDIR /app
 
-COPY go.mod go.sum ./
+ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on
+
+COPY go.mod ./
 RUN go mod download
 
 COPY *.go ./
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /sudoku-go
+RUN go build -o /sudoku-go
 
 EXPOSE 8976
 
