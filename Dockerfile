@@ -1,15 +1,14 @@
 FROM golang:1.21
 
+ENV CGO_ENABLED=0 GOOS=linux
+
 WORKDIR /app
 
-ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on
-
 COPY go.mod ./
-RUN go mod download
 
-COPY *.go ./
+RUN go mod download && go mod verify
 
-RUN go get github.com/ericthomasca/sudoku-go/sudoku
+COPY . .
 
 RUN go build -o /sudoku-go
 
